@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghibli Style Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ghibli Style Image Converter</h1>
+        <p>Upload an image to transform it into a Studio Ghibli-style artwork</p>
+        
+        <div class="upload-container">
+            <div class="file-upload-wrapper">
+                <input type="file" id="file-input" accept="image/*" required>
+                <label for="file-input" class="file-upload-label">
+                    <span id="file-name">Choose an image...</span>
+                    <span class="file-upload-button">Browse</span>
+                </label>
+            </div>
+            <button type="button" class="convert-button" onclick="convertImage()">Convert to Ghibli Style</button>
+        </div>
+        
+        <div id="error-message" class="error-message" style="display: none;"></div>
+        
+        <div id="loading-indicator" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Converting image to Ghibli style... This may take a moment.</p>
+        </div>
+        
+        <div class="result-container" id="result-container" style="display: none;">
+            <div class="image-comparison">
+                <div class="image-wrapper">
+                    <h3>Original Image</h3>
+                    <img id="original-image" alt="Original image">
+                </div>
+                <div class="image-wrapper">
+                    <h3>Ghibli Style</h3>
+                    <img id="converted-image" alt="Converted image">
+                    <div class="download-container">
+                        <button onclick="downloadImage()" class="download-button">Download Converted Image</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
